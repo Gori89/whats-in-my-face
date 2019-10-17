@@ -40,7 +40,6 @@ time.sleep(2.0)
 @app.route("/")
 def index():
 	# return the rendered template
-	a='dog'
 	return render_template("index.html")
 
 def detect_face(frameCount):

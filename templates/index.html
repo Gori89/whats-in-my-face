@@ -6,31 +6,44 @@
     td,
     p,
     input {
-      font: 14px Verdana;
+      font: 14px; font-family : lato; font-weight: bold;
     }
 
     table,
     td {
-      border: solid 1px #DDD;
+      border: solid 0px #DDD;
       border-collapse: collapse;
       padding: 2px 3px;
-      text-align: center;
+      
+      width: 240px;
     }
+    h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.7em;
+    margin-bottom: 0em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    align: center;
+    font-family : lato
+}
 
   </style>
 </head>
 
-<body>
-  <h1>What's in my face?</h1>
+<body style="background-color: rgb(243, 235, 235)"  >
+  
+  <h1 align="center" font-family="lato">What's in my face? </h1>
 
-  <table>
+  <table align="center">
     <tr>
       <td>
-        <img src="{{ url_for('video_feed') }}">
+        <img src="{{ url_for('video_feed') }}"  height="500" width="666">
         <!-- <img src="{{ url_for('video_feed2') }}"> -->
       </td>
       <td>
-       <p id="showData"></p>
+       <p  id="showData"></p>
       </td>
     </tr>
   </table>
@@ -41,10 +54,10 @@
         .then(response => response.json())
         .then(data => {
           //debugger
-          console.log(data)
+          // console.log(data)
           attribute_name = Object.keys(data)
-          console.log(attribute_name)
-          console.log(attribute_name[2])
+          // console.log(attribute_name)
+          // console.log(attribute_name[2])
           //get header
           var table = document.createElement("table");
 
@@ -55,7 +68,9 @@
             var tabCell = tr.insertCell(-1);
             tabCell.innerHTML = attribute_name[i];
             var tabCell = tr.insertCell(-1);
-            tabCell.innerHTML = data[attribute_name[i]];
+            tabCell.align="right"
+            
+            tabCell.innerHTML = data[attribute_name[i]]+" %";
           }
 
 
@@ -70,7 +85,8 @@
         })
     }
 
-    setInterval(whatever, 1000)
+    setInterval(whatever, 1000);
+
 
   </script>
 
