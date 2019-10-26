@@ -146,13 +146,14 @@ def video_feed():
 @app.route("/video_feed2")
 def video_feed2():
 	# return the response generated along with the specific media
+	# Debugging video. Image sended to the NN.
 	# type (mime type)
 	return Response(ImgGenerate('debug'),
 		mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 @app.route("/attributes")
 def attributes():
-	# return the response generated along with the specific media
+	# return the response of the NN. The attributes detected by the NN.
 	# type (mime type)
 
 	return Response(attGenerate(), mimetype='application/json')
@@ -172,9 +173,6 @@ if __name__ == '__main__':
 	args = vars(ap.parse_args())
 
 	# start a thread that will perform motion detection
-
-
-	#get_default_graph()
 	t1 = threading.Thread(target=detect_face, args=(
 		args["frame_count"],))
 	t1.daemon = True
